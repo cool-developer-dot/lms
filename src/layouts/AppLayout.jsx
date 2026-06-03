@@ -1,13 +1,22 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
+import { Menu, Moon, Sun } from 'lucide-react';
 import Sidebar from '../components/Sidebar.jsx';
 
 export default function AppLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isDark, setIsDark] = useState(
+    () => document.documentElement.classList.contains('dark')
+  );
   const location = useLocation();
 
   const closeSidebar = useCallback(() => setSidebarOpen(false), []);
   const openSidebar = useCallback(() => setSidebarOpen(true), []);
+
+  const toggleTheme = () => {
+    document.documentElement.classList.toggle('dark');
+    setIsDark(document.documentElement.classList.contains('dark'));
+  };
 
   useEffect(() => {
     closeSidebar();
@@ -57,33 +66,33 @@ export default function AppLayout() {
 
       <main className="flex min-h-screen w-full min-w-0 flex-1 flex-col lg:ml-64">
         <header className="sticky top-0 z-10 flex h-14 shrink-0 items-center justify-between gap-3 border-b border-slate-200 bg-white/80 px-4 backdrop-blur dark:border-slate-800 dark:bg-slate-900/80 sm:h-16 sm:px-6 lg:px-8">
-          <div className="flex min-w-0 flex-1 items-center gap-3">
-            <button
-              type="button"
-              onClick={openSidebar}
-              className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800 lg:hidden"
-              aria-label="Open menu"
-              aria-expanded={sidebarOpen}
-              aria-controls="app-sidebar"
-            >
-              <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-            <h2 className="truncate text-base font-bold text-slate-800 dark:text-slate-200 sm:text-lg">
-              System Control Center
-            </h2>
-          </div>
           <button
             type="button"
-            onClick={() => document.documentElement.classList.toggle('dark')}
-            className="shrink-0 rounded-lg bg-slate-100 px-3 py-2 text-xs transition hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 sm:px-4 sm:text-sm"
+            onClick={openSidebar}
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800 lg:hidden"
+            aria-label="Open menu"
+            aria-expanded={sidebarOpen}
+            aria-controls="app-sidebar"
           >
-            <span className="hidden sm:inline">🌓 Toggle Theme</span>
-            <span className="sm:hidden" aria-hidden="true">
-              🌓
+            <Menu className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
+          </button>
+
+          <div className="hidden flex-1 lg:block" aria-hidden="true" />
+
+          <button
+            type="button"
+            onClick={toggleTheme}
+            className="inline-flex h-11 min-w-[44px] shrink-0 items-center justify-center gap-2 rounded-lg bg-slate-100 px-3 text-slate-700 transition hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 sm:px-4"
+            aria-label="Toggle theme"
+          >
+            {isDark ? (
+              <Sun className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
+            ) : (
+              <Moon className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
+            )}
+            <span className="hidden text-sm font-medium sm:inline">
+              {isDark ? 'Light mode' : 'Dark mode'}
             </span>
-            <span className="sr-only sm:hidden">Toggle theme</span>
           </button>
         </header>
 

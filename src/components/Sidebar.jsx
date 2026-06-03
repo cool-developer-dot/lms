@@ -1,11 +1,18 @@
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import {
+  BookOpen,
+  FolderOpen,
+  LayoutDashboard,
+  Users,
+  X,
+} from 'lucide-react';
 
 const navItems = [
-  { to: '/', label: 'Dashboard', icon: '📊', end: true },
-  { to: '/courses', label: 'Courses', icon: '📚', end: false },
-  { to: '/categories', label: 'Categories', icon: '📂', end: false },
-  { to: '/users', label: 'Users', icon: '👥', end: false },
+  { to: '/', label: 'Dashboard', Icon: LayoutDashboard, end: true },
+  { to: '/courses', label: 'Courses', Icon: BookOpen, end: false },
+  { to: '/categories', label: 'Categories', Icon: FolderOpen, end: false },
+  { to: '/users', label: 'Users', Icon: Users, end: false },
 ];
 
 const linkBase =
@@ -55,14 +62,12 @@ export default function Sidebar({ isOpen, onClose, onNavigate }) {
           className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 lg:hidden"
           aria-label="Close menu"
         >
-          <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
+          <X className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
         </button>
       </div>
 
       <nav className="flex-1 space-y-1.5 overflow-y-auto" aria-label="Main navigation">
-        {navItems.map(({ to, label, icon, end }) => (
+        {navItems.map(({ to, label, Icon, end }) => (
           <NavLink
             key={to}
             to={to}
@@ -70,9 +75,7 @@ export default function Sidebar({ isOpen, onClose, onNavigate }) {
             onClick={handleNavClick}
             className={({ isActive }) => linkClass(isActive)}
           >
-            <span className="shrink-0 text-lg leading-none" aria-hidden="true">
-              {icon}
-            </span>
+            <Icon className="h-5 w-5 shrink-0" strokeWidth={2} aria-hidden="true" />
             <span className="truncate">{label}</span>
           </NavLink>
         ))}
