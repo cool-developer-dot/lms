@@ -13,12 +13,12 @@ export function renderCategories() {
     }, 50);
 
     return `
-    <div class="border-b border-slate-200 dark:border-slate-800 pb-5 mb-8">
-        <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white">Course Categories</h1>
+    <div class="min-w-0 max-w-full border-b border-slate-200 dark:border-slate-800 pb-5 mb-6 sm:mb-8">
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white break-words">Course Categories</h1>
         <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Manage, partition, and map dynamic structural subject nodes for Wholcure catalog metrics.</p>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 min-w-0">
         
         <div class="bg-white dark:bg-slate-950 p-6 rounded-xl border border-slate-200 dark:border-slate-800 h-fit shadow-xl">
             <h2 id="form-context-title" class="text-lg font-semibold text-slate-800 dark:text-slate-200 mb-4">Add New Category Node</h2>
@@ -36,12 +36,12 @@ export function renderCategories() {
                         class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-slate-900 dark:text-white outline-none focus:border-amber-500 transition"></textarea>
                 </div>
 
-                <div class="flex gap-2">
+                <div class="flex flex-col sm:flex-row gap-2">
                     <button type="submit" id="form-submit-btn"
-                        class="flex-1 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-2.5 px-4 rounded-lg transition duration-150 shadow-md">
+                        class="flex-1 min-h-[44px] bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-2.5 px-4 rounded-lg transition duration-150 shadow-md">
                         Commit Category Data
                     </button>
-                    <button type="button" id="cancel-edit-btn" class="hidden bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 py-2.5 px-3 rounded-lg text-xs font-medium">
+                    <button type="button" id="cancel-edit-btn" class="hidden min-h-[44px] bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 py-2.5 px-3 rounded-lg text-xs font-medium">
                         Cancel
                     </button>
                 </div>
@@ -53,13 +53,13 @@ export function renderCategories() {
                 <h2 class="text-lg font-semibold text-slate-800 dark:text-slate-200">Active Pipeline Clusters</h2>
             </div>
 
-            <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse">
+            <div class="overflow-x-auto -mx-1 px-1">
+                <table class="w-full min-w-[640px] text-left border-collapse">
                     <thead>
                         <tr class="bg-slate-50 dark:bg-slate-900/20 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800">
-                            <th class="px-6 py-4">Structural Class Name</th>
-                            <th class="px-6 py-4">URL Slug Mapping</th>
-                            <th class="px-6 py-4 text-right">Administrative Execution</th>
+                            <th class="px-4 sm:px-6 py-4">Structural Class Name</th>
+                            <th class="px-4 sm:px-6 py-4">URL Slug Mapping</th>
+                            <th class="px-4 sm:px-6 py-4 text-right">Administrative Execution</th>
                         </tr>
                     </thead>
                     <tbody id="category-table-rows" class="divide-y divide-slate-100 dark:divide-slate-800/60 text-sm text-slate-700 dark:text-slate-300">
