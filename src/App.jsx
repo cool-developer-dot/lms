@@ -4,6 +4,7 @@ import Dashboard from './pages/Dashboard.jsx';
 import Courses from './pages/Courses.jsx';
 import Categories from './pages/Categories.jsx';
 import Users from './pages/Users.jsx';
+import Checkout from './pages/Checkout.jsx';
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
         <Route path="courses" element={<Courses />} />
         <Route path="categories" element={<Categories />} />
         <Route path="users" element={<Users />} />
+        <Route path="checkout" element={<Checkout />} />
       </Route>
     </Routes>
   );

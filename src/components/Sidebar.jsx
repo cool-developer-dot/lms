@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import {
   BookOpen,
+  CreditCard,
   FolderOpen,
   LayoutDashboard,
   Users,
@@ -13,6 +14,7 @@ const navItems = [
   { to: '/courses', label: 'Courses', Icon: BookOpen, end: false },
   { to: '/categories', label: 'Categories', Icon: FolderOpen, end: false },
   { to: '/users', label: 'Users', Icon: Users, end: false },
+  { to: '/checkout', label: 'Checkout', Icon: CreditCard, end: false },
 ];
 
 const linkBase =
