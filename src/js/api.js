@@ -52,6 +52,8 @@ export const impersonateTargetUser = (userId) => request(`/admin/impersonate/${u
 export const fetchAllCourses = () => request('/courses');
 export const createNewCourse = (payload) => request('/courses', { method: 'POST', body: JSON.stringify(payload) });
 export const deleteTargetCourse = (courseId) => request(`/courses/${courseId}`, { method: 'DELETE' });
+export const updateCourse = (courseId, payload) =>
+  request(`/courses/${courseId}`, { method: 'PUT', body: JSON.stringify(payload) });
 export const updateCourseApprovalStatus = (courseId, status) => request(`/courses/${courseId}/status`, { method: 'PATCH', body: JSON.stringify({ status }) });
 
 // 3. Category Management
